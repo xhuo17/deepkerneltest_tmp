@@ -5,7 +5,8 @@ from torch.autograd import Variable
 from models.modules import Featurizer, Discriminator
 from utils.utils_HD import *
 import pickle
-from torchvision import datasets
+from utils.utils_HD import MatConvert, Pdist2, MMDu, TST_MMD_adaptive_bandwidth, TST_MMD_u, TST_ME, TST_SCF, TST_C2ST_D, \
+    TST_LCE_D
 from torch.utils.data import DataLoader, Dataset, TensorDataset
 
 
