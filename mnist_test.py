@@ -38,9 +38,9 @@ def gen_opt(use_cuda=False):
     opt.batch_size = 100
     opt.lr = 0.0002
     opt.img_size = 32
-    opt.hidden = 100  # 100 for mnist, 300 for cifar10
     opt.channels = 1
-    opt.n = 200
+    opt.hidden = 100  # 100 for mnist, 300 for cifar10
+    opt.n = 100
     opt.dtype = torch.float
     opt.type = 'c'
     if use_cuda:
@@ -50,7 +50,7 @@ def gen_opt(use_cuda=False):
         opt.device = torch.device(f'cpu')
     opt.N_per = 100
     opt.alpha = 0.05
-    opt.N1 = opt.n
+    opt.N1 = 100
     opt.K = 10
     opt.N_test = 100
     opt.N_f = float(opt.N_test)
@@ -101,10 +101,10 @@ def gen_dataloader(opt):
 def main(use_cuda):
     # Setup seeds
     os.makedirs("./images", exist_ok=True)
-    np.random.seed(200905)
-    torch.manual_seed(200905)
+    np.random.seed(819)
+    torch.manual_seed(819)
     if use_cuda:
-        torch.cuda.manual_seed(200905)
+        torch.cuda.manual_seed(819)
         torch.backends.cudnn.deterministic = True
 
     opt = gen_opt(use_cuda)

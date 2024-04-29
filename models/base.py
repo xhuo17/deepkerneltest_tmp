@@ -42,9 +42,9 @@ class BaseModel(nn.Module):
     def __set_input__(self, kk, data_all, label_all):
         torch.manual_seed(kk * 19 + self.N1)
         torch.cuda.manual_seed(kk * 19 + self.N1)
-        np.random.seed(seed=1223 * (kk + 10) + self.N1)
+        np.random.seed(seed=1102 * (kk + 10) + self.N1)
         self.__init_model__()
-        np.random.seed(seed=728 * (kk + 9) + self.opt.N1)
+        np.random.seed(seed=819 * (kk + 9) + self.opt.N1)
         train_data, train_label = [], []
         ind_M_all = np.arange(4000)
         self.ind_M_tr = np.random.choice(4000, self.opt.N1, replace=False)
@@ -151,10 +151,10 @@ class BaseModel(nn.Module):
         with torch.no_grad():
             for k in range(self.N):
                 # Fetch test data
-                np.random.seed(seed=1223 * (k + 1) + self.N1)
+                np.random.seed(seed=1102 * (k + 1) + self.N1)
                 ind_M = np.random.choice(len(self.ind_M_te), self.N1, replace=False)
                 s1 = data_all[self.ind_M_te[ind_M]]
-                np.random.seed(seed=728 * (k + 3) + self.N1)
+                np.random.seed(seed=819 * (k + 3) + self.N1)
                 ind_F = np.random.choice(len(Fake_MNIST_te), self.N1, replace=False)
                 s2 = Variable(torch.tensor(Fake_MNIST_te[ind_F]))
                 S = torch.cat([s1.cpu(), s2.cpu()], 0)
